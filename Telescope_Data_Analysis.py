@@ -1,11 +1,12 @@
-# Script Name       :
-# Author            :
-# Last Modified     :
-# Version           :
+# Script Name       : Telescope_Data_Analysis.py
+# Author            : Shivakumar Mahakali, Devin Williams
+# Last Modified     : 6/10/2017
+# Version           : 1.00
 #
-# Modifications     :
+# Modifications     : Added comments for easier readability.
 #
-# Description       :
+# Description       : Main script that reads data from a given .dat file, calculates the highest elevation, and outputs
+#                     a file "FRBS_Finished_Calculation.py" with the FRB Name, object's Elevation, and object's Azimuth.
 
 
 from Telescope.Telescope_Function_Library import frb_name, frb_data_numbers, data_split, convert_decimal

@@ -1,3 +1,15 @@
+# Script Name       : Telescope_Function_Library.py
+# Author            : Shivakumar Mahakali, Devin Williams
+# Last Modified     : 6/10/2017
+# Version           : 1.00
+#
+# Modifications     : Added comments for easier readability.
+#
+# Description       : Function library for the main script Telescope_Data_analysis.py. contains functions for reading
+#                     data via RegEx, splitting RAJ and DEJ into Right Ascension and Declination, and performing the
+#                     Elevation and Azimuth calculations.
+
+
 import math
 import re
 import datetime
