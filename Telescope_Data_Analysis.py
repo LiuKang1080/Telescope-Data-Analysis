@@ -1,16 +1,17 @@
 # Script Name       : Telescope_Data_Analysis.py
 # Author            : Shivakumar Mahakali, Devin Williams
-# Last Modified     : 6/10/2017
-# Version           : 1.00
+# Last Modified     : 7/19/2017
+# Version           : 2.00
 #
-# Modifications     : Added comments for easier readability.
+# Modifications     : Added logging infrastructure.
 #
-# Description       : Main script that reads data from a given .dat file, calculates the highest elevation, and outputs
-#                     a file "FRBS_Finished_Calculation.py" with the FRB Name, object's Elevation, and object's Azimuth.
+# Description       : Main script that reads data from a given .dat file. Calculates the highest elevation, and outputs
+#                     a logging file "FRBS_Calculations.log" with the FRB Name, object's Elevation, and object's Azimuth
+#                     along with the time of calculation. Any errors are logged to "Error_Logs.log".
 
 
 from Telescope.Telescope_Function_Library import frb_name, frb_data_numbers, data_split, convert_decimal
-from Telescope.Telescope_Function_Library import elevation_calculation
+from Telescope.Telescope_Function_Library import elevation_calculation, setup_loggers
 
 
 def main():
@@ -49,14 +50,13 @@ def main():
     azimuth_string = str(max_azimuth)
 
     try:
-
-        with open('FRBS_Finished_Calculation.dat', 'w') as f:
-            f.write("FRB Name \t \t Elevation \t \t \t Azimuth \n")
-            f.write(name_of_frb + "\t" + elevation_string + "\t" + azimuth_string)
-            print("Calculation finished. Data output to file: FRBS_Finished_Calculation.dat")
+        normal_logger = setup_loggers('normal_logger', 'FRBS_Calculations.log')
+        normal_logger.info('\n' + 'FRB Name: \t' + name_of_frb + '\n' 'Elevation:\t'
+                           + elevation_string + '\n' 'Azimuth:\t' + azimuth_string + '\n')
 
     except Exception as err:
-        print("An Error has occurred: Could not output file. " + str(err))
+        error_logger = setup_loggers('error_logger', 'Error_Logs.log')
+        error_logger.exception("An Error has occurred: Could not output file. \n" + str(err))
 
     input('Press ENTER twice to quit.')
     input()

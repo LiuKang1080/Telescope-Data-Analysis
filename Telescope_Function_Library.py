@@ -1,9 +1,9 @@
 # Script Name       : Telescope_Function_Library.py
 # Author            : Shivakumar Mahakali, Devin Williams
-# Last Modified     : 6/10/2017
-# Version           : 1.00
+# Last Modified     : 7/19/2017
+# Version           : 2.00
 #
-# Modifications     : Added comments for easier readability.
+# Modifications     : Added logging infrastructure.
 #
 # Description       : Function library for the main script Telescope_Data_analysis.py. contains functions for reading
 #                     data via RegEx, splitting RAJ and DEJ into Right Ascension and Declination, and performing the
@@ -13,6 +13,25 @@
 import math
 import re
 import datetime
+import logging
+
+
+def setup_loggers(name, log_file, level=logging.INFO):
+    """
+    Setup multiple loggers for different files.
+    :param name: Individual logger name
+    :param log_file: Name of the logging files ('FRBS_Calculations.log', 'Error_Logger.log')
+    :param level: Logging level
+    :return: Returns the logger object
+    """
+    formatter = logging.Formatter('\n' + '%(asctime)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S.%p')
+    handler = logging.FileHandler(log_file)
+    handler.setFormatter(formatter)
+
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    logger.addHandler(handler)
+    return logger
 
 
 def frb_name(line):
