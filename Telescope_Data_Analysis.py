@@ -51,8 +51,8 @@ def main():
 
     try:
         normal_logger = setup_loggers('normal_logger', 'FRBS_Calculations.log')
-        normal_logger.info('\n' + 'FRB Name: \t' + name_of_frb + '\n' 'Elevation:\t'
-                           + elevation_string + '\n' 'Azimuth:\t' + azimuth_string + '\n')
+        normal_logger.info('\n' + 'Data is calculated from: ' + data_file + '\n' 'FRB Name: \t' + name_of_frb +
+                           '\n' 'Elevation:\t' + elevation_string + '\n' 'Azimuth:\t' + azimuth_string + '\n')
 
     except Exception as err:
         error_logger = setup_loggers('error_logger', 'Error_Logs.log')
