@@ -1,7 +1,6 @@
 # Script Name       : Telescope_Function_Library.py
 # Author            : Shivakumar Mahakali, Devin Williams
-# Last Modified     : 7/19/2017
-# Version           : 2.00
+# Last Modified     : 9/20/2017
 #
 # Modifications     : Added logging infrastructure.
 #

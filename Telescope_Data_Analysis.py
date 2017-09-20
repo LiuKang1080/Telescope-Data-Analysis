@@ -1,7 +1,6 @@
 # Script Name       : Telescope_Data_Analysis.py
 # Author            : Shivakumar Mahakali, Devin Williams
-# Last Modified     : 7/19/2017
-# Version           : 2.00
+# Last Modified     : 9/20/2017
 #
 # Modifications     : Added logging infrastructure.
 #
@@ -15,6 +14,11 @@ from Telescope.Telescope_Function_Library import elevation_calculation, setup_lo
 
 
 def main():
+    """
+    Loop through all data sets in the .dat file provided, and calculate the elevation and azimuth for each data set;
+    Find the Object with the highest elevation.
+    :return: N/A FRBS_Calculations will be updated with the new result after each consecutive execution.
+    """
 
     data_list = []
     frb_name_list = []
@@ -24,10 +28,14 @@ def main():
     data_file = input('Enter the full data file name...')
 
     with open(data_file, 'r') as FRBS_data:
+        # Read FRBS.dat file. each line will be a data set.
+
         for line in FRBS_data:
             data_list.append(line)
 
         for i in range(1, len(data_list)):
+            # Split the FRB names, RA and DEC for each data set.
+
             data_line = data_list[i]
             name_of_object = frb_name(str(data_line))
             frb_name_list.append(name_of_object)
@@ -60,6 +68,7 @@ def main():
 
     input('Press ENTER twice to quit.')
     input()
+
 
 if __name__ == '__main__':
     main()
