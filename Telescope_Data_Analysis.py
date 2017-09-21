@@ -48,6 +48,7 @@ def main():
             elevation_list.append(elevation_num)
             azimuth_list.append(azimuth_num)
 
+    # Find the maximum elevation from the data set, link elevation to that specific FRB object.
     max_elevation_index = max(range(len(elevation_list)), key=elevation_list.__getitem__)
 
     name_of_frb = frb_name_list[max_elevation_index]
